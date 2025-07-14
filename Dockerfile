@@ -1,13 +1,14 @@
 # Dockerfile para API Flask leve
-FROM python:3.11-slim
+FROM node:20-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY package.json package-lock.json* ./
+RUN npm install
 
-COPY app.py .
+COPY app.js ./
+COPY .env.example ./
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["npm", "start"]
