@@ -24,6 +24,7 @@ app.get('/api/posts', async (req, res) => {
       WHERE sentimento IS NOT NULL
         AND sentimento <> ''
         AND LOWER(sentimento) <> 'neutro'
+        AND sentimento <> 'Claro! Por favor'
       ORDER BY id DESC
       LIMIT 1000
     `);
