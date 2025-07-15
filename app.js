@@ -22,6 +22,8 @@ app.get('/api/posts', async (req, res) => {
       SELECT caption, sentimento1, sentimento, categorias1, categorias
       FROM media
       WHERE sentimento IS NOT NULL
+        AND sentimento <> ''
+        AND LOWER(sentimento) <> 'neutro'
       ORDER BY id DESC
       LIMIT 1000
     `);
