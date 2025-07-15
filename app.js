@@ -21,9 +21,9 @@ app.get('/api/posts', async (req, res) => {
     const result = await pool.query(`
       SELECT caption, sentimento1, sentimento, categorias1, categorias
       FROM media
-      WHERE sentimento1 IS NOT NULL
+      WHERE sentimento IS NOT NULL
       ORDER BY id DESC
-      LIMIT 100
+      LIMIT 1000
     `);
     res.json(result.rows);
   } catch (err) {
